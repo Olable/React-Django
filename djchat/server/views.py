@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from rest_framework import viewsets 
+from .models import Server
+#from .serializers import ServerSerializer
 
-#class ServerListViewSet(viewsets.ViewSet):
+class ServerListViewSet(viewsets.ViewSet):
 
-    #queryset = Server.objects.all()
-    #serializer_class = ServerSerializer
-    #def list(self, request):
-        #category = request.query_params.get('category', None)   
-        #return render(request, 'server_list.html')
+   queryset = Server.objects.all()
 
+   def list(self, request):
+      category = request.query_params.get('category')
+
+      if category:
+         self.queryset.filter(category=category)  
