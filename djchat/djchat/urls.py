@@ -6,7 +6,7 @@ from server.views import ServerListViewSet
 
 
 router=DefaultRouter()
-router.register('api/server/list/', ServerListViewSet)
+router.register('api/server/list', ServerListViewSet)
  
  
  
